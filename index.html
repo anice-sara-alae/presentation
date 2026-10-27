@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>الإلحاد بين الوهم والحقيقة – مادة التربية الإسلامية – الثانية بكالوريا</title>
+<!-- الخطوط اختيارية: إن لم يتوفر الاتصال بالإنترنت يستعمل المتصفح خطوط النظام العربية تلقائيًا -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f1e7; --bg2:#efe7d6; --card:#ffffff; --text:#1c2b29; --muted:#5b6b68;
+  --primary:#0f5c4d; --primary2:#157a65; --accent:#c49a3a; --accent-soft:#f6ead0;
+  --ok:#1b8a52; --bad:#c0392b; --line:#e0d7c3; --shadow:0 6px 22px rgba(15,60,50,.10);
+  --hero1:#0c4a3e; --hero2:#16745f;
+}
+[data-theme="dark"]{
+  --bg:#0e1a19; --bg2:#13231f; --card:#172826; --text:#e6eeec; --muted:#9db3ae;
+  --primary:#3fb59b; --primary2:#52c7ad; --accent:#e0b95a; --accent-soft:#2a2a1c;
+  --ok:#4cc88a; --bad:#ef7a6b; --line:#26403b; --shadow:0 6px 22px rgba(0,0,0,.4);
+  --hero1:#0b2b26; --hero2:#134b3f;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{font-family:'Cairo','Segoe UI',Tahoma,'Noto Naskh Arabic',system-ui,sans-serif;background:var(--bg);color:var(--text);
+  display:flex;flex-direction:column;height:100dvh;overflow:hidden;font-size:18px;line-height:1.8;transition:background .3s,color .3s}
+button{font-family:inherit;cursor:pointer}
+
+.topbar{display:flex;align-items:center;gap:10px;padding:8px 16px;background:var(--card);border-bottom:1px solid var(--line);box-shadow:var(--shadow);z-index:20}
+.brand{font-weight:800;color:var(--primary);font-size:1.05rem;white-space:nowrap}
+.brand small{display:block;font-weight:600;color:var(--muted);font-size:.72rem;line-height:1.2}
+.nav-chips{flex:1;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:2px 4px}
+.nav-chips::-webkit-scrollbar{display:none}
+.chip{border:1px solid var(--line);background:var(--bg);color:var(--text);padding:4px 14px;border-radius:999px;font-size:.85rem;white-space:nowrap;transition:.2s}
+.chip:hover{border-color:var(--primary)}
+.chip.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+.icon-btn{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--bg);color:var(--text);font-size:1.1rem;flex:none}
+.icon-btn:hover{border-color:var(--primary)}
+
+.stage{flex:1;position:relative;overflow:hidden}
+.slide{position:absolute;inset:0;overflow-y:auto;padding:26px 22px 40px;opacity:0;visibility:hidden;transform:translateX(-28px);
+  transition:opacity .45s ease,transform .45s ease,visibility .45s;background:var(--bg)}
+.slide.active{opacity:1;visibility:visible;transform:none}
+.wrap{max-width:1100px;margin:0 auto}
+.slide.active .anim{animation:up .55s both}
+.slide.active .anim:nth-child(2){animation-delay:.06s}
+.slide.active .anim:nth-child(3){animation-delay:.12s}
+.slide.active .anim:nth-child(4){animation-delay:.18s}
+@keyframes up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+
+h2,h3{line-height:1.5}
+.slide-title{font-size:clamp(1.55rem,3.2vw,2.2rem);color:var(--primary);font-weight:800;margin-bottom:6px;display:flex;align-items:center;gap:12px}
+.slide-title .ico{font-size:1.9rem}
+.slide-sub{color:var(--muted);margin-bottom:18px}
+.divider{height:4px;width:90px;background:linear-gradient(90deg,var(--accent),transparent);border-radius:4px;margin:6px 0 20px}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.grid.g2{grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px 20px;box-shadow:var(--shadow)}
+.card h3{color:var(--primary);font-size:1.1rem;margin-bottom:6px}
+.card p,.card li{font-size:1rem}
+.card .num{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--primary);color:#fff;font-weight:700;margin-bottom:8px}
+.say{background:var(--accent-soft);border-right:5px solid var(--accent);border-radius:12px;padding:12px 16px;margin:16px 0;font-size:1rem}
+.say b{color:var(--primary)}
+.big-idea{background:linear-gradient(135deg,var(--primary),var(--primary2));color:#fff;border-radius:20px;padding:20px 24px;font-size:1.2rem;font-weight:700;box-shadow:var(--shadow);margin:16px 0}
+.big-idea.light{background:var(--card);color:var(--text);border:2px dashed var(--accent)}
+.quote{font-size:1.25rem;font-weight:700;text-align:center;padding:22px;background:var(--card);border-radius:20px;border:2px solid var(--accent);box-shadow:var(--shadow)}
+.tag{display:inline-block;background:var(--accent-soft);color:var(--primary);border-radius:999px;padding:2px 12px;font-size:.82rem;font-weight:700;margin-left:6px}
+ul.clean{list-style:none}
+ul.clean li{padding:3px 0}
+ul.clean li::before{content:"◆";color:var(--accent);margin-left:8px;font-size:.7rem}
+ol.qs{padding-right:22px}
+ol.qs li{margin-bottom:8px}
+
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--primary);color:#fff;border:0;border-radius:12px;padding:10px 20px;font-size:1rem;font-weight:700;transition:.2s;box-shadow:0 3px 10px rgba(0,0,0,.15)}
+.btn:hover{transform:translateY(-2px);background:var(--primary2)}
+.btn.ghost{background:transparent;color:var(--primary);border:2px solid var(--primary);box-shadow:none}
+.btn.small{padding:6px 14px;font-size:.9rem}
+.reveal{display:none;margin-top:12px;background:var(--bg2);border-right:5px solid var(--primary);border-radius:12px;padding:12px 16px}
+.reveal.show{display:block;animation:up .4s both}
+.reveal b{color:var(--primary)}
+
+.cover{background:radial-gradient(circle at 20% 15%,rgba(255,255,255,.10) 0 120px,transparent 121px),
+  radial-gradient(circle at 85% 85%,rgba(196,154,58,.25) 0 160px,transparent 161px),
+  linear-gradient(135deg,var(--hero1),var(--hero2));color:#fff;display:grid;place-items:center;text-align:center}
+.cover .inner{max-width:860px}
+.bismillah{font-family:'Amiri Quran','Amiri','Traditional Arabic',serif;font-size:1.8rem;color:#f3d98b;margin-bottom:8px}
+.cover h1{font-size:clamp(2.1rem,6vw,3.6rem);font-weight:800;margin:6px 0}
+.cover .lvl{font-size:1.3rem;opacity:.92}
+.cover .lesson{display:inline-block;margin:18px 0;padding:14px 30px;border-radius:18px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3)}
+.cover .lesson div{font-size:1rem;opacity:.85}
+.cover .lesson strong{font-size:clamp(1.5rem,4vw,2.3rem);color:#f3d98b}
+.cover .motto{font-size:1.15rem;opacity:.95;margin-bottom:18px}
+.cover-hint{font-size:.85rem;opacity:.75}
+
+.ayah-card{background:var(--card);border:2px solid var(--accent);border-radius:22px;padding:22px 26px;text-align:center;box-shadow:var(--shadow);margin-bottom:16px;position:relative}
+.ayah{font-family:'Amiri Quran','Amiri','Traditional Arabic','Scheherazade New',serif;font-size:clamp(1.4rem,3vw,2.1rem);line-height:2.3;color:var(--text)}
+.ref{color:var(--primary);font-weight:700;margin-top:6px;font-size:1rem}
+.vocab{width:100%;border-collapse:collapse;font-size:1rem}
+.vocab td{padding:6px 8px;border-bottom:1px dashed var(--line);vertical-align:top}
+.vocab td:first-child{font-weight:700;color:var(--primary);white-space:nowrap;width:1%}
+.qa{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 18px;margin-bottom:12px}
+.qa .q{font-weight:700}
+.qa .q::before{content:"❓ "}
+.mini-ayah{font-family:'Amiri Quran','Amiri','Traditional Arabic',serif;font-size:1.3rem;line-height:2.1;color:var(--text);background:var(--bg2);border-radius:12px;padding:8px 14px;margin:6px 0;text-align:center}
+
+.chain{display:flex;align-items:stretch;gap:6px;flex-wrap:wrap;justify-content:center;margin:12px 0}
+.chain .node{background:var(--primary);color:#fff;border-radius:14px;padding:10px 18px;font-weight:800}
+.chain .node.alt{background:var(--accent);color:#1c2b29}
+.chain .node.bad{background:var(--bad)}
+.chain .arr{align-self:center;color:var(--accent);font-size:1.5rem;font-weight:800}
+
+.cmp{width:100%;border-collapse:separate;border-spacing:0;border-radius:18px;overflow:hidden;box-shadow:var(--shadow);background:var(--card)}
+.cmp th{padding:12px;font-size:1.05rem;color:#fff;background:var(--primary)}
+.cmp th.no{background:var(--bad)}
+.cmp td{padding:10px 14px;border-top:1px solid var(--line);vertical-align:top;font-size:.98rem}
+.cmp td:first-child{font-weight:700;color:var(--bad)}
+
+.quiz-box{background:var(--card);border-radius:20px;padding:22px;box-shadow:var(--shadow);border:1px solid var(--line)}
+.quiz-meta{display:flex;justify-content:space-between;color:var(--muted);font-size:.95rem;margin-bottom:8px}
+.qbar{height:8px;background:var(--bg2);border-radius:8px;overflow:hidden;margin-bottom:14px}
+.qbar i{display:block;height:100%;background:var(--accent);width:0;transition:width .4s}
+.qtext{font-size:1.2rem;font-weight:700;margin-bottom:14px}
+.opt{display:block;width:100%;text-align:right;background:var(--bg);border:2px solid var(--line);color:var(--text);padding:11px 16px;border-radius:12px;margin-bottom:10px;font-size:1.02rem;transition:.2s}
+.opt:hover:not(:disabled){border-color:var(--primary)}
+.opt.right{border-color:var(--ok);background:rgba(27,138,82,.14)}
+.opt.wrong{border-color:var(--bad);background:rgba(192,57,43,.12)}
+.feedback{margin-top:8px;padding:12px 16px;border-radius:12px;display:none}
+.feedback.show{display:block;animation:up .35s both}
+.feedback.good{background:rgba(27,138,82,.14);border-right:5px solid var(--ok)}
+.feedback.bad{background:rgba(192,57,43,.12);border-right:5px solid var(--bad)}
+.score-big{font-size:3rem;font-weight:800;color:var(--primary);text-align:center}
+
+.footer{display:flex;align-items:center;gap:12px;padding:8px 16px 10px;background:var(--card);border-top:1px solid var(--line);z-index:20}
+.footer .mid{flex:1;display:flex;flex-direction:column;gap:4px;align-items:center}
+.counter{font-size:.85rem;color:var(--muted)}
+.progress{width:100%;height:8px;border-radius:8px;background:var(--bg2);overflow:hidden}
+.progress i{display:block;height:100%;width:0;background:linear-gradient(270deg,var(--accent),var(--primary));transition:width .45s}
+.navbtn{background:var(--primary);color:#fff;border:0;border-radius:12px;padding:9px 20px;font-weight:700;font-size:1rem;flex:none}
+.navbtn:disabled{opacity:.35;cursor:not-allowed}
+.navbtn:not(:disabled):hover{background:var(--primary2)}
+
+@media (max-width:640px){
+  body{font-size:16.5px}
+  .brand small{display:none}
+  .slide{padding:18px 14px 36px}
+  .navbtn{padding:9px 12px}
+  .navbtn span{display:none}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">الإلحاد بين الوهم والحقيقة<small>مادة التربية الإسلامية · الثانية بكالوريا</small></div>
+  <nav class="nav-chips" id="navChips" aria-label="محاور الدرس"></nav>
+  <button class="icon-btn" id="fsBtn" title="ملء الشاشة" aria-label="ملء الشاشة">⛶</button>
+  <button class="icon-btn" id="themeBtn" title="الوضع الليلي / النهاري" aria-label="تبديل الوضع">🌙</button>
+</header>
+
+<main class="stage" id="stage">
+
+<!-- ================= 1) الغلاف ================= -->
+<section class="slide cover" data-axis="0">
+  <div class="inner">
+    <div class="bismillah anim">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+    <h1 class="anim">مادة التربية الإسلامية</h1>
+    <div class="lvl anim">الثانية بكالوريا</div>
+    <div class="lesson anim">
+      <div>الدرس:</div>
+      <strong>الإلحاد بين الوهم والحقيقة</strong>
+    </div>
+    <p class="motto anim">«الإيمان لا يخاف من السؤال، والإلحاد يبدأ حين يتحول الشك إلى إنكار بلا دليل.»</p>
+    <div class="cover-hint anim">استعمل الأسهم ← → للتنقل بين الشرائح</div>
+  </div>
+</section>
+
+<!-- ================= 2) الأهداف والخطة ================= -->
+<section class="slide" data-axis="0">
+  <div class="wrap">
+    <h2 class="slide-title anim"><span class="ico">🎯</span>أهداف الدرس وخطته</h2>
+    <div class="divider"></div>
+    <p class="slide-sub anim">💬 في نهاية هذا الدرس، سأكون – بإذن الله – قادرًا على:</p>
+    <div class="grid">
+      <div class="card anim"><span class="num">1</span><p>بيان كيف يظهر الانحراف العقدي.</p></div>
+      <div class="card anim"><span class="num">2</span><p>تعريف الإلحاد وذكر نمطين من أنماطه.</p></div>
+      <div class="card anim"><span class="num">3</span><p>الاستدلال بآية على منهج القرآن في إثبات الخالق.</p></div>
+      <div class="card anim"><span class="num">4</span><p>الرد على شبهة «الدين ضد العلم».</p></div>
+      <div class="card anim"><span class="num">5</span><p>بيان كيف يكشف القرآن أوهام الإلحاد ويثبت حقيقة الإيمان.</p></div>
+    </div>
+    <div class="say anim">💬 <b>لنتعرف على خطتنا:</b></div>
+    <div class="chain anim">
+      <div class="node">الانحراف العقدي</div><div class="arr">←</div>
+      <div class="node">تعريف الإلحاد وأنماطه</div><div class="arr">←</div>
+      <div class="node">منهج القرآن في إثبات الخالق</div><div class="arr">←</div>
+      <div class="node">شبهة الدين ضد العلم</div><div class="arr">←</div>
+      <div class="node alt">أوهام الإلحاد وحقيقة الإيمان</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 3) وضعية الانطلاق ================= -->
+<section class="slide" data-axis="0">
+  <div class="wrap">
+    <h2 class="slide-title anim"><span class="ico">🧩</span>وضعية الانطلاق</h2>
+    <div class="divider"></div>
+    <div class="say anim">💬 <b>لاحظوا</b> هذا الموقف الذي قد يمر بكم على مواقع التواصل.</div>
+    <div class="quote anim">🗣️ منشور يقول: «العلم فسّر الكون كله، ولم نعد بحاجة إلى الإيمان بالله.»</div>
+    <div class="card anim" style="margin-top:16px">
+      <h3>أسئلة للنقاش:</h3>
+      <ol class="qs">
+        <li>هل يوجد تعارض حقيقي بين العلم والإيمان بالله؟</li>
+        <li>هل عدم رؤيتنا لشيء دليل على عدم وجوده؟</li>
+        <li>هل الشك والسؤال عن وجود الله أمر مذموم في الإسلام؟</li>
+        <li>بماذا نجيب من يشكك في وجود الخالق؟</li>
+      </ol>
+      <div class="say" style="margin-bottom:0">💬 من منكم يستطيع أن يجيب؟ علّلوا إجاباتكم.</div>
+      <button class="btn reveal-btn" style="margin-top:14px" data-show="🤔 فكر قبل أن تتابع" data-hide="إخفاء التمهيد">🤔 فكر قبل أن تتابع</button>
+      <div class="reveal">
+        <p><b>لنستخلص معًا:</b> السؤال في ذاته ليس مشكلة؛ فالقرآن نفسه يدعو إلى التفكر والنظر. المشكلة حين ينتقل الإنسان من «لا أعرف» إلى «لا يوجد» دون دليل. وهل العلم التجريبي يملك أدوات الحكم على وجود الخالق أو عدمه؟</p>
+        <p>إذن: لنتعلم كيف نفرق بين <b>الشك المنهجي الباحث عن الحقيقة</b> و<b>الإنكار القائم على الوهم</b>، ولنرَ كيف عالج القرآن هذه القضية.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 4) الانحراف العقدي ================= -->
+<section class="slide" data-axis="1">
+  <div class="wrap">
+    <h2 class="slide-title anim"><span class="ico">🧭</span>أولًا: الانحراف العقدي… كيف يظهر؟</h2>
+    <div class="divider"></div>
+    <div class="grid g2">
+      <div class="card anim"><span class="tag">العقيدة</span>
+        <p style="margin-top:8px">ما يعقد عليه الإنسان قلبه ويؤمن به إيمانًا جازمًا، وهي في الإسلام: الإيمان بالله وملائكته وكتبه ورسله واليوم الآخر والقدر.</p></div>
+      <div class="card anim"><span class="tag">الانحراف العقدي</span>
+        <p style="margin-top:8px">هو الخروج عن العقيدة الصحيحة القائمة على التوحيد والإيمان بما جاء عن الله، إلى اعتقادات باطلة أو شكوك أو إنكار.</p></div>
+    </div>
+    <div class="say anim">💬 <b>فكروا معي:</b> كيف نعرف أن إنسانًا انحرف في عقيدته؟ يظهر ذلك في صور متعددة:</div>
+    <div class="grid">
+      <div class="card anim"><h3>1️⃣ إنكار وجود الله</h3><p>وهو الإلحاد: جحود الخالق جملة.</p></div>
+      <div class="card anim"><h3>2️⃣ الشرك بالله</h3><p>صرف شيء من العبادة لغير الله، أو اعتقاد أن غيره يشاركه في الخلق والتدبير.</p></div>
+      <div class="card anim"><h3>3️⃣ الشك والتشكيك</h3><p>الارتياب في ثوابت العقيدة كالوحي والبعث، ونشر الشبهات بلا دليل.</p></div>
+      <div class="card anim"><h3>4️⃣ الاستهزاء بالدين</h3><p>السخرية من الله أو رسوله أو الشعائر والتهاون بحرمة المقدسات.</p></div>
+      <div class="card anim"><h3>5️⃣ التعلق بالسحر والشعوذة</h3><p>الكهانة والتنجيم واعتقاد أن غير الله يملك النفع والضر بذاته.</p></div>
+      <div class="card anim"><h3>6️⃣ تأليه الهوى والأشخاص</h3><p>طاعة الهوى أو تقديس البشر طاعة مطلقة من دون الله.</p></div>
+    </div>
+    <div class="say anim">💬 <b>ماذا نستنتج؟</b> الانحراف العقدي قد يكون صريحًا (كالإنكار) وقد يكون خفيًا (كالتساهل في الشك والتقليد). ويُراعى في هذه الصور ما ورد في الكتاب المدرسي المعتمد.</div>
+  </div>
+</section>
+
+<!-- ================= 5) تعريف الإلحاد ================= -->
+<section class="slide" data-axis="1">
+  <div class="wrap">
+    <h2 class="slide-title anim"><span class="ico">📖</span>ثانيًا: تعريف الإلحاد</h2>
+    <div class="divider"></div>
+    <div class="grid g2">
+      <div class="card anim"><span class="tag">لغةً</span>
+        <p style="margin-top:8px">الإلحاد من «ألحد»، ومعناه: <b>مال وحاد وعدل عن الشيء</b>. ومنه سُمّي «اللحد» في القبر لأنه يميل إلى جانبه.</p></div>
+      <div class="card anim"><span class="tag">اصطلاحًا</span>
+        <p style="margin-top:8px">هو <b>إنكار وجود الله تعالى</b> (الخالق المدبر)، والقول بأن الكون وُجد بلا خالق، وأن المادة أو الطبيعة هي أصل كل شيء.</p></div>
+    </div>
+    <div class="big-idea anim">بعبارة بسيطة: الإلحاد هو إنكار وجود الخالق، أو الميل عن الإيمان به، بغير دليل علمي أو عقلي قاطع.</div>
+    <div class="say anim">💬 <b>لاحظوا</b> الفرق بين «لا أعلم» و«لا يوجد»؛ الأول موقف عاقل يحتاج إلى بحث، والثاني حكم قاطع يحتاج إلى برهان. فهل يملك المنكر برهانًا؟ هذا ما سنكتشفه.</div>
+    <div class="card anim">
+      <h3>🔎 مثال للتقريب</h3>
+      <p>شخص يجلس في غرفة مظلمة ويقول: «لا توجد شمس في الكون». هل جهله بالشمس دليل على عدمها؟ كذلك من لم يدرك الخالق بأدواته المحدودة، لا يحق له أن يحكم بعدمه.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 6) أنماط الإلحاد ================= -->
+<section class="slide" data-axis="1">
+  <div class="wrap">
+    <h2 class="slide-title anim"><span class="ico">🧱</span>ثالثًا: أنماط الإلحاد</h2>
+    <div class="divider"></div>
+    <div class="say anim">💬 يختلف الملحدون في موقفهم؛ فمنهم من يجزم بالإنكار، ومنهم من يتردد. ومن أهم أنماطه نمطان:</div>
+    <div class="grid g2">
+      <div class="card anim" style="border-color:var(--bad)">
+        <span class="num" style="background:var(--bad)">1</span>
+        <h3>الإلحاد المطلق (الإنكاري)</h3>
+        <p>ينكر وجود الله جزمًا، ويرى أن الكون وُجد بلا خالق، وأن المادة أزلية، وأن الحياة والإنسان نتاج الصدفة والطبيعة.</p>
+        <p style="color:var(--muted)">🔎 مثال: من يقول «لا إله والحياة مادة».</p>
+      </div>
+      <div class="card anim" style="border-color:var(--accent)">
+        <span class="num" style="background:var(--accent);color:#1c2b29">2</span>
+        <h3>الإلحاد الشكي (النسبي / اللاأدرية)</h3>
+        <p>لا ينفي وجود الله صراحة ولا يثبته؛ يرى أن العقل البشري عاجز عن معرفة ذلك، ويعلّق الحكم.</p>
+        <p style="color:var(--muted)">🔎 مثال: من يقول «لا أدري، ولا أحد يستطيع أن يعرف».</p>
+      </div>
+    </div>
+    <div class="card anim" style="margin-top:16px">
+      <h3>📌 نمط آخر للاستئناس: الإلحاد العملي</h3>
+      <p>أن يقرّ الإنسان بوجود الله بلسانه، لكنه يعيش وكأن الله غير موجود: لا يرجع إلى أوامره ولا يحاسب نفسه.</p>
+    </div>
+    <div class="card anim" style="margin-top:16px">
+      <h3>🧠 من أسباب الإلحاد</h3>
+      <ul class="clean">
+        <li>الجهل بالدين وبحقيقة الإيمان.</li>
+        <li>اتباع الهوى والتحرر من الأوامر والنواهي.</li>
+        <li>الكبر والاستعلاء عن الاعتراف بالحق.</li>
+        <li>سوء فهم العلم وتحميله ما لا يقوله.</li>
+        <li>التقليد وتأثير الإعلام والشبهات المنتشرة.</li>
+      </ul>
+    </div>
+    <div class="say anim">💬 <b>ملاحظة:</b> تختلف صياغة تقسيم الأنماط بين الكتب؛ فيُعتمد في الجواب ما ورد في الكتاب المدرسي، والمهم أن يُذكر نمطان مع تعريف كل منهما ومثاله.</div>
+  </div>
+</section>
+
+<!-- ================= 7) منهج القرآن في إثبات الخالق ================= -->
+<section class="slide" data-axis="2">
+  <div class="wrap">
+    <h2 class="slide-title anim"><span class="ico">🌌</span>رابعًا: منهج القرآن في إثبات الخالق</h2>
+    <div class="divider"></div>
+    <div class="say anim">💬 <b>ماذا نستنتج؟</b> القرآن لا يطلب من الإنسان أن يؤمن دون تفكير، بل يخاطب <b>العقل</b> و<b>الفطرة</b>، ويدعو إلى النظر في الكون والنفس.</div>
+    <div class="grid">
+      <div class="card anim"><h3>1️⃣ الاستدلال بالفطرة</h3><p>الإنسان مفطور على معرفة خالقه. قال تعالى: ﴿فِطْرَتَ اللَّهِ الَّتِي فَطَرَ النَّاسَ عَلَيْهَا﴾ (الروم: 30).</p></div>
+      <div class="card anim"><h3>2️⃣ النظر في الكون والنفس</h3><p>يدعو إلى التأمل في السماء والأرض وفي خلق الإنسان للاستدلال على الخالق (فصلت: 53).</p></div>
+      <div class="card anim"><h3>3️⃣ الحجة العقلية والسؤال التقريري</h3><p>يطرح أسئلة تحصر الاحتمالات وتُبطل الباطل منها، كما في سورة الطور.</p></div>
+      <div class="card anim"><h3>4️⃣ دليل النظام والإحكام</h3><p>انتظام الكون دليل على إله واحد مدبر (الأنبياء: 22).</p></div>
+      <div class="card anim"><h3>5️⃣ الحوار وضرب الأمثال</h3><p>يحاور المخالف بالحجة، ويقرّب المعاني بالأمثلة المحسوسة.</p></div>
+    </div>
+    <div class="big-idea anim">منهج القرآن: خطاب للعقل والفطرة معًا، بالدليل والنظر والحوار، لا بالإكراه ولا بالتقليد.</div>
+  </div>
+</section>
+
+<!-- ================= 8) استدلال بآية الطور ================= -->
+<section class="slide" data-axis="2">
+  <div class="wrap">
+    <h2 class="slide-title anim"><span class="ico">📜</span>الاستدلال بآية: منهج السبر والتقسيم</h2>
+    <div class="divider"></div>
+    <div class="ayah-card anim">
+      <div class="ayah">أَمْ خُلِقُوا مِنْ غَيْرِ شَيْءٍ أَمْ هُمُ الْخَالِقُونَ ﴿٣٥﴾ أَمْ خَلَقُوا السَّمَاوَاتِ وَالْأَرْضَ ۚ بَل لَّا يُوقِنُونَ ﴿٣٦﴾</div>
+      <div class="ref">سورة الطور، الآيتان 35 – 36</div>
+    </div>
+    <div class="grid g2">
+      <div class="card anim"><h3>📝 شرح المفردات</h3>
+        <table class="vocab">
+          <tr><td>أم</td><td>للاستفهام الإنكاري، أي: هل يُعقل ذلك؟</td></tr>
+          <tr><td>خُلقوا من غير شيء</td><td>وُجدوا بلا خالق ولا سبب.</td></tr>
+          <tr><td>الخالقون</td><td>الذين خلقوا أنفسهم.</td></tr>
+          <tr><td>لا يوقنون</td><td>لا يصلون إلى اليقين، فينكرون عن شك وعناد.</td></tr>
+        </table></div>
+      <div class="card anim"><h3>📌 المعنى الإجمالي</h3>
+        <p>يسأل الله المنكرين: هل وُجدوا من العدم بلا خالق؟ أم هم الذين خلقوا أنفسهم؟ أم هم الذين خلقوا السماوات والأرض؟ ثم يبين أن سبب إنكارهم ليس نقص الدليل بل ضعف يقينهم.</p></div>
+    </div>
+    <div class="card anim" style="margin-top:16px">
+      <h3>🔍 وجه الاستدلال (السبر والتقسيم)</h3>
+      <div class="chain">
+        <div class="node bad">وُجدنا من غير خالق؟ ❌</div>
+        <div class="node bad">خلقنا أنفسنا؟ ❌</div>
+        <div class="node bad">خلقنا السماوات والأرض؟ ❌</div>
+        <div class="arr">⇐</div>
+        <div class="node">إذن لنا خالق ✅</div>
+      </div>
+      <p>الاحتمالات الثلاثة باطلة، فيتعين أن لنا خالقًا موجِدًا هو الله تعالى.</p>
+      <button class="btn small reveal-btn" data-show="لماذا يبطل كل احتمال؟" data-hide="إخفاء التعليل">لماذا يبطل كل احتمال؟</button>
+      <div class="reveal">
+        <p><b>1) الوجود من العدم:</b> العدم لا ينتج شيئًا؛ فلا يُعقل أن يوجد شيء بلا سبب ولا موجد.</p>
+        <p><b>2) خلق الإنسان نفسه:</b> يلزم أن يكون موجودًا قبل أن يوجد، وهذا متناقض، ثم إن الإنسان عاجز عن خلق ذبابة.</p>
+        <p><b>3) خلق السماوات والأرض:</b> الإنسان جزء من الكون وبعد وجوده، فلا يملك خلق ما سبقه.</p>
+        <p>إذن لا بد من خالق غير مخلوق، قادر، واجب الوجود: هو الله.</p>
+      </div>
+    </div>
+    <div class="say anim">💬 <b>سؤال للقسم:</b> ما الفرق بين هذا الدليل وبين فكرة «الصدفة»؟ <i>(الصدفة اسم لغياب العلم بالسبب، لا سبب في ذاته.)</i></div>
+  </div>
+</section>
+
+<!-- ================= 9) آيات أخرى ================= -->
+<section class="slide" data-axis="2">
+  <div class="wrap">
+    <h2 class="slide-title anim"><span class="ico">✨</span>آيات أخرى في إثبات الخالق</h2>
+    <div class="divider"></div>
+    <div class="say anim">💬 <b>لنربط هذا بما سبق:</b> رأينا الدليل العقلي في سورة الطور، وهذه أدلة قرآنية أخرى تؤكد المنهج نفسه.</div>
+    <div class="grid">
+      <div class="card anim"><span class="tag">دليل النظام</span>
+        <div class="mini-ayah">لَوْ كَانَ فِيهِمَا آلِهَةٌ إِلَّا اللَّهُ لَفَسَدَتَا ۚ فَسُبْحَانَ اللَّهِ رَبِّ الْعَرْشِ عَمَّا يَصِفُونَ ﴿٢٢﴾</div>
+        <div class="ref">الأنبياء: 22</div>
+        <p>انتظام الكون وعدم فساده دليل على إله واحد مدبر، فلو تعددت الآلهة لتنازعت واضطرب النظام.</p></div>
+      <div class="card anim"><span class="tag">دليل الآيات الكونية والنفسية</span>
+        <div class="mini-ayah">سَنُرِيهِمْ آيَاتِنَا فِي الْآفَاقِ وَفِي أَنفُسِهِمْ حَتَّىٰ يَتَبَيَّنَ لَهُمْ أَنَّهُ الْحَقُّ ۗ أَوَلَمْ يَكْفِ بِرَبِّكَ أَنَّهُ عَلَىٰ كُلِّ شَيْءٍ شَهِيدٌ ﴿٥٣﴾</div>
+        <div class="ref">فصلت: 53</div>
+        <p>الآفاق (الكون) والأنفس (خلق الإنسان) آيات تقود إلى الحق، وكلما تقدم العلم ظهرت آيات جديدة.</p></div>
+      <div class="card anim"><span class="tag">دليل الفطرة</span>
+        <div class="mini-ayah">فَأَقِمْ وَجْهَكَ لِلدِّينِ حَنِيفًا ۚ فِطْرَتَ اللَّهِ الَّتِي فَطَرَ النَّاسَ عَلَيْهَا ۚ لَا تَبْدِيلَ لِخَلْقِ اللَّهِ ۚ ذَٰلِكَ الدِّينُ الْقَيِّمُ وَلَٰكِنَّ أَكْثَرَ النَّاسِ لَا يَعْلَمُونَ ﴿٣٠﴾</div>
+        <div class="ref">الروم: 30</div>
+        <p>الإنسان مفطور على الإقرار بالخالق، فيلجأ إليه في الشدة؛ والإلحاد طارئ على الفطرة بسبب الشبهات والأهواء.</p></div>
+    </div>
+    <div class="say anim">💬 <b>إذن…</b> تتكامل الأدلة: دليل عقلي (الطور)، ودليل النظام (الأنبياء)، ودليل الكون والنفس (فصلت)، ودليل الفطرة (الروم).</div>
+  </div>
+</section>
+
+<!-- ================= 10) شبهة الدين ضد العلم ================= -->
+<section class="slide" data-axis="3">
+  <div class="wrap">
+    <h2 class="slide-title anim"><span class="ico">⚗️</span>خامسًا: شبهة «الدين ضد العلم»</h2>
+    <div class="divider"></div>
+    <div class="card anim" style="border-color:var(--bad)">
+      <h3>❗ نص الشبهة</h3>
+      <p>«الدين خرافة تمنع العقل من البحث، والعلم الحديث فسّر الكون دون حاجة إلى إله، فمن اختار العلم يجب أن يترك الدين.»</p>
+    </div>
+    <div class="say anim">💬 <b>فكروا في هذه الشبهة:</b> هل هي صحيحة؟ لنفحصها بهدوء، ولنقابلها بالأجوبة التالية:</div>
+    <div class="grid">
+      <div class="card anim"><h3>1️⃣ اختلاف المجالين</h3><p>العلم التجريبي يدرس الظواهر المادية المحسوسة ويجيب عن «كيف؟»، أما الدين فيجيب عن الأسئلة الكبرى: «من أوجدنا؟ ولماذا؟ وإلى أين؟». فلا تعارض لاختلاف المجال.</p></div>
+      <div class="card anim"><h3>2️⃣ حدود العلم التجريبي</h3><p>العلم لا يملك أدوات نفي الغيب؛ وغياب الدليل التجريبي على ما هو خارج أدواته ليس دليلًا على عدمه.</p></div>
+      <div class="card anim"><h3>3️⃣ الإسلام يحث على العلم</h3><p>أول ما نزل: ﴿اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ﴾ (العلق: 1)، وقال: ﴿هَلْ يَسْتَوِي الَّذِينَ يَعْلَمُونَ وَالَّذِينَ لَا يَعْلَمُونَ﴾ (الزمر: 9)، وقال: ﴿إِنَّمَا يَخْشَى اللَّهَ مِنْ عِبَادِهِ الْعُلَمَاءُ﴾ (فاطر: 28).</p></div>
+      <div class="card anim"><h3>4️⃣ العلم يقوّي الإيمان</h3><p>كلما اكتشف العلم قوانين دقيقة تنظم الكون ازدادت دلائل الإحكام والنظام، وهي من الآيات التي يدعو القرآن للتأمل فيها.</p></div>
+      <div class="card anim"><h3>5️⃣ شهادة التاريخ</h3><p>ازدهرت العلوم في الحضارة الإسلامية: ابن الهيثم في البصريات، والخوارزمي في الجبر، والزهراوي في الجراحة؛ وكان هؤلاء العلماء مؤمنين.</p></div>
+      <div class="card anim"><h3>6️⃣ خصوصية التجربة الأوروبية</h3><p>الصراع بين الكنيسة والعلماء خاص بالسياق الأوروبي؛ والإسلام لا كهنوت فيه يحتكر المعرفة أو يحجر على البحث.</p></div>
+    </div>
+    <div class="big-idea anim">الإيمان والعلم لا يتعارضان؛ فالعلم يكشف «كيف» تعمل سنن الله في الكون، والدين يخبرنا «من» أوجدها و«لماذا».</div>
+  </div>
+</section>
+
+<!-- ================= 11) نموذج جواب مكتوب ================= -->
+<section class="slide" data-axis="3">
+  <div class="wrap">
+    <h2 class="slide-title anim"><span class="ico">✍️</span>نموذج جواب مكتوب عن الشبهة</h2>
+    <div class="divider"></div>
+    <div class="say anim">💬 هذا نموذج يمكن للتلميذ أن يحتذيه في الامتحان: <b>عرض الشبهة ← الرد ← الدليل ← الخلاصة</b>.</div>
+    <div class="chain anim">
+      <div class="node">1. عرض الشبهة</div><div class="arr">←</div>
+      <div class="node">2. بيان الخلل</div><div class="arr">←</div>
+      <div class="node">3. الدليل الشرعي والعقلي</div><div class="arr">←</div>
+      <div class="node alt">4. الخلاصة</div>
+    </div>
+    <div class="card anim" style="border-color:var(--accent);line-height:2.1">
+      <p>يزعم بعضهم أن الدين يتعارض مع العلم، وأن التقدم العلمي يغني عن الإيمان بالله. وهذا الزعم باطل؛ لأن العلم التجريبي يبحث في الظواهر المادية القابلة للملاحظة والقياس ويجيب عن سؤال «كيف؟»، أما الدين فيجيب عن الأسئلة الكبرى المتعلقة بأصل الوجود وغايته ومصيره، فاختلف المجالان فلا تعارض بينهما. كما أن العلم بطبيعته لا يملك أدوات نفي وجود الخالق، وعدم الاطلاع على الشيء ليس دليلًا على عدمه.</p>
+      <p>وقد حثّ الإسلام على العلم والبحث، فكان أول ما نزل من القرآن ﴿اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ﴾ (العلق: 1)، وقال تعالى: ﴿هَلْ يَسْتَوِي الَّذِينَ يَعْلَمُونَ وَالَّذِينَ لَا يَعْلَمُونَ﴾ (الزمر: 9). وشهد التاريخ بازدهار العلوم في الحضارة الإسلامية على أيدي علماء مؤمنين. أما الصراع الذي عرفته أوروبا بين الكنيسة والعلم فخاص بسياقها ولا علاقة له بالإسلام.</p>
+      <p>إذن: الدين والعلم متكاملان، فكلاهما يقودان الإنسان إلى معرفة الحقيقة وحسن الاستخلاف في الأرض.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 12) كيف يكشف القرآن أوهام الإلحاد ================= -->
+<section class="slide" data-axis="3">
+  <div class="wrap">
+    <h2 class="slide-title anim"><span class="ico">💡</span>سادسًا: كيف يكشف القرآن أوهام الإلحاد؟</h2>
+    <div class="divider"></div>
+    <div class="say anim">💬 <b>لاحظوا</b> الجدول: في كل صف وهمٌ يردده الملحدون، وكيف كشفه القرآن بالدليل. من يستطيع أن يشرح الصف الأول؟</div>
+    <table class="cmp anim">
+      <thead><tr><th class="no">الوهم الإلحادي</th><th>كيف كشفه القرآن؟</th></tr></thead>
+      <tbody>
+        <tr><td>«الكون وُجد صدفة بلا خالق»</td><td>سؤال الطور يبطل الصدفة ويحصر الاحتمالات: ﴿أَمْ خُلِقُوا مِنْ غَيْرِ شَيْءٍ أَمْ هُمُ الْخَالِقُونَ﴾ (الطور: 35).</td></tr>
+        <tr><td>«الدهر والطبيعة هما سبب الحياة والموت»</td><td>وصف القرآن قولهم: ﴿وَقَالُوا مَا هِيَ إِلَّا حَيَاتُنَا الدُّنْيَا نَمُوتُ وَنَحْيَا وَمَا يُهْلِكُنَا إِلَّا الدَّهْرُ﴾ ثم كشف ضعفه: ﴿وَمَا لَهُم بِذَٰلِكَ مِنْ عِلْمٍ ۖ إِنْ هُمْ إِلَّا يَظُنُّونَ﴾ (الجاثية: 24)؛ فقولهم ظن لا علم.</td></tr>
+        <tr><td>«الإنكار سببه نقص الأدلة»</td><td>الأدلة قائمة، والعيب في العناد والكبر: ﴿وَجَحَدُوا بِهَا وَاسْتَيْقَنَتْهَا أَنفُسُهُمْ ظُلْمًا وَعُلُوًّا﴾ (النمل: 14).</td></tr>
+        <tr><td>«الحياة بلا غاية ولا حساب»</td><td>﴿أَفَحَسِبْتُمْ أَنَّمَا خَلَقْنَاكُمْ عَبَثًا وَأَنَّكُمْ إِلَيْنَا لَا تُرْجَعُونَ﴾ (المؤمنون: 115)؛ فالخلق له حكمة وغاية.</td></tr>
+        <tr><td>«الحرية أن أتبع رغباتي بلا قيد»</td><td>﴿أَفَرَأَيْتَ مَنِ اتَّخَذَ إِلَٰهَهُ هَوَاهُ﴾ (الجاثية: 23)؛ فمن أطاع هواه فقد صار عبدًا له، وليس حرًا.</td></tr>
+        <tr><td>«الإيمان يعطل العقل»</td><td>القرآن يدعو إلى النظر والتفكر والتعقل في آيات الكون، ويعيب التقليد الأعمى.</td></tr>
+      </tbody>
+    </table>
+    <div class="say anim">💬 <b>ماذا نستنتج؟</b> القرآن يكشف أوهام الإلحاد بثلاثة أمور: <b>إبطال حجته العقلية</b>، وبيان أنه <b>ظن بلا علم</b>، وتحليل <b>دوافعه النفسية</b> (الكبر والهوى).</div>
+  </div>
+</section>
+
+<!-- ================= 13) حقيقة الإيمان وخلاصة ================= -->
+<section class="slide" data-axis="4">
+  <div class="wrap">
+    <h2 class="slide-title anim"><span class="ico">🌟</span>حقيقة الإيمان وثمراته</h2>
+    <div class="divider"></div>
+    <div class="say anim">💬 بعد أن كشفنا الوهم، <b>كيف يثبت القرآن حقيقة الإيمان؟</b> بالدليل أولًا، ثم بثمراته في حياة الإنسان:</div>
+    <div class="grid">
+      <div class="card anim"><h3>🧠 يوافق العقل</h3><p>فكل أثر له مؤثر، وكل نظام له منظّم؛ فالإيمان نتيجة منطقية للتفكير السليم.</p></div>
+      <div class="card anim"><h3>❤️ يوافق الفطرة</h3><p>الإنسان يلجأ إلى الله عند الشدائد بفطرته.</p></div>
+      <div class="card anim"><h3>🕊️ يمنح الطمأنينة</h3><p>﴿أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ﴾ (الرعد: 28).</p></div>
+      <div class="card anim"><h3>🎯 يعطي الحياة معنى وغاية</h3><p>يجيب عن: من أنا؟ ولماذا خُلقت؟ وإلى أين أسير؟</p></div>
+      <div class="card anim"><h3>⚖️ يؤسس للأخلاق والمسؤولية</h3><p>الشعور بالمحاسبة أمام الله يضبط السلوك.</p></div>
+      <div class="card anim"><h3>🔬 يحفّز العلم والعمل</h3><p>لأن الكون مخلوق منظّم قابل للفهم، والعلم عبادة وتعمير للأرض.</p></div>
+    </div>
+    <div class="big-idea anim" style="font-size:1.2rem;line-height:2">الخلاصة: الإلحاد وهم لا يقوم على دليل، والإيمان حقيقة تشهد لها الفطرة والعقل والكون والوحي. والقرآن يفتح باب السؤال والنظر، ثم يقود الباحث إلى الحقيقة.</div>
+  </div>
+</section>
+
+<!-- ================= 14) Quiz ================= -->
+<section class="slide" data-axis="4">
+  <div class="wrap">
+    <h2 class="slide-title anim"><span class="ico">📝</span>نشاط تفاعلي: اختبر فهمك</h2>
+    <div class="divider"></div>
+    <div class="quiz-box anim" id="quizBox"></div>
+  </div>
+</section>
+
+<!-- ================= 15) أسئلة التقويم ================= -->
+<section class="slide" data-axis="4">
+  <div class="wrap">
+    <h2 class="slide-title anim"><span class="ico">✅</span>أسئلة التقويم مع نماذج الإجابة</h2>
+    <div class="divider"></div>
+    <div class="say anim">💬 أجيبوا في كراساتكم أولًا، ثم اضغطوا على «نموذج إجابة» للمقارنة.</div>
+    <div id="assess"></div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <button class="navbtn" id="prevBtn">→ <span>السابق</span></button>
+  <div class="mid">
+    <div class="progress"><i id="progressBar"></i></div>
+    <div class="counter" id="counter"></div>
+  </div>
+  <button class="navbtn" id="nextBtn"><span>التالي</span> ←</button>
+</footer>
+
+<script>
+var AXES=["المدخل","الانحراف والإلحاد","منهج القرآن","الشبهات والأوهام","الخلاصة والتقويم"];
+
+var ASSESS=[
+ ["كيف يظهر الانحراف العقدي؟","الانحراف العقدي هو الخروج عن العقيدة الصحيحة القائمة على التوحيد. ويظهر في صور منها: إنكار وجود الله (الإلحاد)، والشرك بالله بصرف شيء من العبادة لغيره، والشك والتشكيك في ثوابت العقيدة كالوحي والبعث، والاستهزاء بالدين والشعائر، والتعلق بالسحر والشعوذة والكهانة، وتأليه الهوى أو تقديس الأشخاص طاعة مطلقة من دون الله."],
+ ["عرّف الإلحاد.","الإلحاد لغة: الميل والعدول عن الشيء (ومنه اللحد لميله في جانب القبر). واصطلاحًا: إنكار وجود الله تعالى والقول بأن الكون وُجد بلا خالق، وأن المادة أو الطبيعة أصل كل شيء."],
+ ["اذكر نوعين من أنماط الإلحاد.","1) الإلحاد المطلق (الإنكاري): ينكر وجود الله جزمًا ويرى أن المادة أزلية. 2) الإلحاد الشكي (النسبي أو اللاأدرية): لا ينفي وجود الله ولا يثبته، ويرى أن العقل عاجز عن معرفة ذلك. (ومن الأنماط أيضًا الإلحاد العملي: الإقرار بالله لفظًا مع العيش كأنه غير موجود.)"],
+ ["استدل بآية على منهج القرآن في إثبات الخالق.","قال تعالى: ﴿أَمْ خُلِقُوا مِنْ غَيْرِ شَيْءٍ أَمْ هُمُ الْخَالِقُونَ ۝ أَمْ خَلَقُوا السَّمَاوَاتِ وَالْأَرْضَ ۚ بَل لَّا يُوقِنُونَ﴾ (الطور: 35-36). وجه الاستدلال: يعتمد القرآن منهج السبر والتقسيم؛ فيحصر الاحتمالات: أن يوجدوا من العدم بلا خالق، أو أن يخلقوا أنفسهم، أو أن يخلقوا السماوات والأرض، وكلها باطلة عقلًا، فيتعين أن لهم خالقًا هو الله."],
+ ["اكتب جوابًا لشبهة «الدين ضد العلم».","الدين والعلم لا يتعارضان؛ لأن العلم التجريبي يدرس الظواهر المادية ويجيب عن «كيف؟»، والدين يجيب عن «من؟ ولماذا؟». والعلم لا يملك نفي الغيب لأنه خارج أدواته. وقد حثّ الإسلام على العلم: ﴿اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ﴾ (العلق: 1)، وازدهرت العلوم في الحضارة الإسلامية على أيدي علماء مؤمنين، أما صراع الكنيسة مع العلم فخاص بأوروبا."],
+ ["كيف يكشف القرآن أوهام الإلحاد ويثبت حقيقة الإيمان؟","يكشف أوهام الإلحاد بـ: إبطال حجته العقلية (الصدفة والخلق الذاتي – الطور 35)، وبيان أن قوله ظن بلا علم (الجاثية 24)، وكشف دوافعه النفسية من كبر وهوى (النمل 14، الجاثية 23)، وإظهار عبثية الحياة بلا غاية (المؤمنون 115). ويثبت حقيقة الإيمان بالأدلة العقلية والكونية والفطرية (الأنبياء 22، فصلت 53، الروم 30)، وبثمراته: الطمأنينة (الرعد 28) والغاية والمسؤولية."]
+];
+
+var QUIZ=[
+ {q:"ما معنى الإلحاد في اللغة؟",o:["الميل والعدول عن الشيء","الإيمان بالغيب","الصبر على البلاء","الاجتهاد في العمل"],e:"ألحد: مال وحاد وعدل، ومنه «اللحد» في القبر لأنه يميل إلى جانبه."},
+ {q:"ما التعريف الاصطلاحي الأدق للإلحاد؟",o:["إنكار وجود الله والقول بأن الكون بلا خالق","التقصير في بعض العبادات","الاختلاف في المسائل الفقهية","النقاش في قضايا علمية"],e:"الإلحاد اصطلاحًا: إنكار وجود الله تعالى والقول بأن المادة أصل كل شيء."},
+ {q:"أي نمط يمثل موقف من يقول: «لا أدري هل هناك خالق أم لا»؟",o:["الإلحاد الشكي (اللاأدرية)","الإلحاد المطلق","الشرك","الإيمان"],e:"اللاأدرية لا تنفي وجود الله ولا تثبته، بل تعلّق الحكم."},
+ {q:"أي مظهر من مظاهر الانحراف العقدي؟",o:["الشرك بالله","الاعتصام بالوحي","التفكر في الكون","طلب العلم"],e:"الشرك بصرف العبادة لغير الله من أبرز صور الانحراف العقدي."},
+ {q:"بماذا يستدل القرآن في قوله ﴿أَمْ خُلِقُوا مِنْ غَيْرِ شَيْءٍ أَمْ هُمُ الْخَالِقُونَ﴾؟",o:["السبر والتقسيم بحصر الاحتمالات وإبطالها","الاستدلال بالإكراه","التقليد","الاستدلال بالخرافة"],e:"يحصر القرآن الاحتمالات ويبطل الباطل منها، فيثبت أن للكون خالقًا."},
+ {q:"ما الجواب الأنسب لشبهة «الدين ضد العلم»؟",o:["العلم والدين مجالان مختلفان لا تعارض بينهما، والإسلام يحث على العلم","الدين يمنع البحث العلمي","العلم أثبت عدم وجود الله","لا حاجة إلى العلم أصلًا"],e:"الإسلام يحث على العلم، والعلم التجريبي لا يملك نفي الغيب."},
+ {q:"ماذا تدل عليه الآية ﴿وَمَا لَهُم بِذَٰلِكَ مِنْ عِلْمٍ ۖ إِنْ هُمْ إِلَّا يَظُنُّونَ﴾؟",o:["أن قول المنكرين ظن لا علم","أن العلم ينكر الله","أن الظن علم يقيني","أن الإيمان ظن"],e:"الآية تكشف أن إنكارهم قائم على الظن لا على العلم اليقيني."},
+ {q:"أي آية تدل على أن أول ما نزل من القرآن حثّ على القراءة والعلم؟",o:["﴿اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ﴾","﴿قُلْ هُوَ اللَّهُ أَحَدٌ﴾","﴿لَا إِكْرَاهَ فِي الدِّينِ﴾","﴿وَالْعَصْرِ﴾"],e:"أول ما نزل: ﴿اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ﴾ (العلق: 1)."},
+ {q:"أي من ثمرات الإيمان تشير إليها آية ﴿أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ﴾؟",o:["الطمأنينة","الخوف","الشك","الحيرة"],e:"ذكر الله يورث القلوب الطمأنينة والسكينة."},
+ {q:"ما الذي تكشفه الآية ﴿وَجَحَدُوا بِهَا وَاسْتَيْقَنَتْهَا أَنفُسُهُمْ ظُلْمًا وَعُلُوًّا﴾؟",o:["أن الإنكار قد يكون عن كبر وعناد رغم اليقين الداخلي","أن الأدلة غائبة","أن الإيمان إكراه","أن العلم غير ممكن"],e:"قد يجحد الإنسان الحق بلسانه استكبارًا وهو موقن به في قلبه."}
+];
+
+/* التقويم */
+(function(){
+  var h="";
+  ASSESS.forEach(function(q,i){
+    h+='<div class="qa"><div class="q">'+(i+1)+'. '+q[0]+'</div><button class="btn small ghost reveal-btn" style="margin-top:8px" data-show="نموذج إجابة" data-hide="إخفاء الإجابة">نموذج إجابة</button><div class="reveal">'+q[1]+'</div></div>';
+  });
+  document.getElementById("assess").innerHTML=h;
+})();
+
+/* الاختبار */
+(function(){
+  var box=document.getElementById("quizBox"),qi=0,score=0,order=[];
+  var good=["أحسنت! إجابة صحيحة 👏","ممتاز! واصل هكذا 🌟","بارك الله فيك، فهمك سليم ✅","رائع! أنت على الطريق الصحيح 💪"];
+  function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
+  function start(){qi=0;score=0;order=shuffle(QUIZ.map(function(_,i){return i;}));render();}
+  function render(){
+    if(qi>=order.length)return end();
+    var Q=QUIZ[order[qi]];
+    var opts=shuffle(Q.o.map(function(t,i){return {t:t,ok:i===0};}));
+    box.innerHTML='<div class="quiz-meta"><span>السؤال '+(qi+1)+' / '+order.length+'</span><span>النقاط: '+score+'</span></div>'+
+      '<div class="qbar"><i style="width:'+(qi/order.length*100)+'%"></i></div>'+
+      '<div class="qtext">'+Q.q+'</div><div id="opts"></div><div class="feedback" id="fb"></div>'+
+      '<div style="text-align:left;margin-top:10px"><button class="btn" id="qNext" style="display:none">'+(qi===order.length-1?'عرض النتيجة':'السؤال التالي')+' ←</button></div>';
+    var oc=box.querySelector("#opts");
+    opts.forEach(function(o){
+      var b=document.createElement("button");b.className="opt";b.textContent=o.t;
+      b.onclick=function(){
+        oc.querySelectorAll(".opt").forEach(function(x,k){x.disabled=true;if(opts[k].ok)x.classList.add("right");});
+        var fb=box.querySelector("#fb");
+        if(o.ok){score++;fb.className="feedback show good";fb.innerHTML="<b>"+good[Math.floor(Math.random()*good.length)]+"</b><br>"+Q.e;}
+        else{b.classList.add("wrong");fb.className="feedback show bad";fb.innerHTML="<b>إجابة غير صحيحة.</b> الإجابة الصحيحة مظللة بالأخضر.<br>"+Q.e;}
+        var nb=box.querySelector("#qNext");nb.style.display="inline-flex";nb.onclick=function(){qi++;render();};
+      };
+      oc.appendChild(b);
+    });
+  }
+  function end(){
+    var n=order.length,p=Math.round(score/n*100),m;
+    if(p>=80)m="ممتاز! لقد استوعبت الدرس جيدًا، بارك الله فيك 🌟";
+    else if(p>=50)m="جيد! راجع النقاط التي أخطأت فيها لتتقنها 👍";
+    else m="لا بأس! أعد قراءة الدرس والمحاولة، فالتكرار يثبت الفهم 💪";
+    box.innerHTML='<div class="qbar"><i style="width:100%"></i></div><div class="score-big">'+score+' / '+n+'</div>'+
+      '<p style="text-align:center;font-size:1.2rem;font-weight:700">'+m+'</p>'+
+      '<div style="text-align:center;margin-top:14px"><button class="btn" id="qAgain">🔁 إعادة الاختبار</button></div>';
+    box.querySelector("#qAgain").onclick=start;
+  }
+  start();
+})();
+
+/* التنقل */
+var slides=Array.prototype.slice.call(document.querySelectorAll(".slide")),cur=0;
+var chipsBox=document.getElementById("navChips"),chips=[];
+AXES.forEach(function(name,ai){
+  var first=slides.findIndex(function(s){return +s.dataset.axis===ai;});
+  if(first<0)return;
+  var b=document.createElement("button");b.className="chip";b.textContent=name;b.dataset.axis=ai;
+  b.onclick=function(){go(first);};
+  chipsBox.appendChild(b);chips.push(b);
+});
+function go(i){
+  if(i<0||i>=slides.length)return;
+  slides[cur].classList.remove("active");
+  cur=i;
+  slides[cur].classList.add("active");
+  slides[cur].scrollTop=0;
+  var ax=+slides[cur].dataset.axis;
+  chips.forEach(function(c){var on=+c.dataset.axis===ax;c.classList.toggle("active",on);if(on)c.scrollIntoView({inline:"center",block:"nearest",behavior:"smooth"});});
+  document.getElementById("progressBar").style.width=((cur+1)/slides.length*100)+"%";
+  document.getElementById("counter").textContent="الشريحة "+(cur+1)+" من "+slides.length;
+  document.getElementById("prevBtn").disabled=cur===0;
+  document.getElementById("nextBtn").disabled=cur===slides.length-1;
+}
+document.getElementById("prevBtn").onclick=function(){go(cur-1);};
+document.getElementById("nextBtn").onclick=function(){go(cur+1);};
+document.addEventListener("keydown",function(e){
+  var t=e.target;if(t&&(t.isContentEditable||/INPUT|TEXTAREA/.test(t.tagName)))return;
+  if(e.key==="ArrowLeft"||e.key==="PageDown"||(e.key===" "&&t.tagName!=="BUTTON")){e.preventDefault();go(cur+1);}
+  else if(e.key==="ArrowRight"||e.key==="PageUp"){e.preventDefault();go(cur-1);}
+  else if(e.key==="Home"){go(0);}
+  else if(e.key==="End"){go(slides.length-1);}
+});
+(function(){
+  var x0=null,y0=null,st=document.getElementById("stage");
+  st.addEventListener("touchstart",function(e){x0=e.touches[0].clientX;y0=e.touches[0].clientY;},{passive:true});
+  st.addEventListener("touchend",function(e){
+    if(x0===null)return;var dx=e.changedTouches[0].clientX-x0,dy=e.changedTouches[0].clientY-y0;
+    if(Math.abs(dx)>70&&Math.abs(dx)>Math.abs(dy)*1.6){dx<0?go(cur+1):go(cur-1);}
+    x0=null;
+  },{passive:true});
+})();
+
+/* إظهار الإجابات */
+document.addEventListener("click",function(e){
+  var rb=e.target.closest(".reveal-btn");
+  if(rb){
+    var box=rb.nextElementSibling;
+    if(box&&box.classList.contains("reveal")){
+      var on=box.classList.toggle("show");
+      rb.textContent=on?rb.dataset.hide:rb.dataset.show;
+    }
+  }
+});
+
+/* الوضع الليلي/النهاري */
+var themeBtn=document.getElementById("themeBtn");
+function setTheme(t){
+  document.documentElement.setAttribute("data-theme",t);
+  themeBtn.textContent=t==="dark"?"☀️":"🌙";
+  try{localStorage.setItem("ilhad-theme",t);}catch(e){}
+}
+(function(){var t="light";try{t=localStorage.getItem("ilhad-theme")||"light";}catch(e){}setTheme(t);})();
+themeBtn.onclick=function(){setTheme(document.documentElement.getAttribute("data-theme")==="dark"?"light":"dark");};
+
+/* ملء الشاشة */
+document.getElementById("fsBtn").onclick=function(){
+  if(!document.fullscreenElement){(document.documentElement.requestFullscreen||function(){}).call(document.documentElement);}
+  else{document.exitFullscreen();}
+};
+
+go(0);
+</script>
+</body>
+</html>
